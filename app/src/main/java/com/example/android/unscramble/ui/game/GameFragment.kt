@@ -23,9 +23,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.android.unscramble.R
 import com.example.android.unscramble.databinding.GameFragmentBinding
+import com.example.android.unscramble.ui.level.LevelFragmentDirections
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 /**
@@ -116,6 +118,8 @@ class GameFragment : Fragment() {
                 }
                 .setPositiveButton(getString(R.string.play_again)) { _, _ ->
                     restartGame()
+                }.setNeutralButton("Change Level") {_, _ ->
+                selectLevel()
                 }
                 .show()
     }
@@ -134,6 +138,10 @@ class GameFragment : Fragment() {
      */
     private fun exitGame() {
         activity?.finish()
+    }
+
+    private fun selectLevel(){
+        findNavController().navigate(R.id.action_gameFragment_to_levelFragment)
     }
 
     /*

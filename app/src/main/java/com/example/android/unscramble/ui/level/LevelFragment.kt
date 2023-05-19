@@ -40,7 +40,24 @@ class LevelFragment : Fragment() {
             val selectedLevel = Levels.A1
             val action = LevelFragmentDirections.actionLevelFragmentToGameFragment(selectedLevel)
             this.findNavController().navigate(action)
+        }
 
+        binding.btnA2.setOnClickListener {
+            val selectedLevel = Levels.A2
+            val action = LevelFragmentDirections.actionLevelFragmentToGameFragment(selectedLevel)
+            this.findNavController().navigate(action)
+        }
+
+        binding.btnB1.setOnClickListener {
+            val selectedLevel = Levels.B1
+            val action = LevelFragmentDirections.actionLevelFragmentToGameFragment(selectedLevel)
+            this.findNavController().navigate(action)
+        }
+
+        binding.btnB2.setOnClickListener {
+            val selectedLevel = Levels.B2
+            val action = LevelFragmentDirections.actionLevelFragmentToGameFragment(selectedLevel)
+            this.findNavController().navigate(action)
         }
     }
 
