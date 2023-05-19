@@ -20,6 +20,7 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.TtsSpan
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -56,17 +57,23 @@ class GameViewModel : ViewModel() {
 
     // List of words used in the game
     private var wordsList: MutableList<String> = mutableListOf()
-    private lateinit var currentWord: String
-
-    init {
-        getNextWord()
-    }
+    lateinit var currentWord: String
+    var selectedLevel: Levels?= null
 
     /*
      * Updates currentWord and currentScrambledWord with the next word.
      */
-    private fun getNextWord() {
-        currentWord = allWordsList.random()
+     fun getNextWord() {
+        val currentList = when(selectedLevel){
+            Levels.A1 -> a1List
+            Levels.A2 -> a2List
+            Levels.B1 -> b1List
+            Levels.B2 -> b2List
+            null -> emptyList()
+        }
+
+        if (currentList.isNotEmpty()) currentWord = currentList.random() else return
+
         val tempWord = currentWord.toCharArray()
         tempWord.shuffle()
 

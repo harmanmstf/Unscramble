@@ -16,9 +16,16 @@
 
 package com.example.android.unscramble.ui.game
 
-
+// instead of string list model can be made with levels.
 const val MAX_NO_OF_WORDS = 10
 const val SCORE_INCREASE = 20
+
+enum class Levels {
+    A1,
+    A2,
+    B1,
+    B2
+}
 
 // List with all the words for the Game
 val allWordsList: List<String> =
